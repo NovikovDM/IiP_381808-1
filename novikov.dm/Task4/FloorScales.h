@@ -7,11 +7,11 @@ using namespace std;
 class FloorScales
 {
 private:
-	int size, count;
+	int size, count, delta;
 public:
-	observation *A;
+	weighing *A;
 	FloorScales();//konstruktor po umolchanyu
-	FloorScales(const weighing);//konstruktor inicializacii
+	FloorScales(int _size);//konstruktor inicializacii
 	FloorScales(const FloorScales &obj);//konstructor kopirovaniya
 	~FloorScales();//destruktor
 	void add_weighing(weighing &obj);//dobavlenie vzveshivaniya
@@ -26,3 +26,4 @@ public:
 	FloorScales& operator=(const FloorScales &obj);//operator prisvaivaniya
 	friend istream& operator>>(istream &stream, FloorScales &obj);//vvod v potok
 	friend ostream& operator<<(ostream &stream, const FloorScales &obj);//vivod v potok
+};

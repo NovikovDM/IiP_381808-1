@@ -6,31 +6,56 @@
 #include "FloorScales.h"
 FloorScales::FloorScales() //konstruktor po umolchanyu
 {
-	count = 0;
+	count = size = 0;
 	A = NULL;
+	delta = 10;
 }
 
 
-FloorScales::FloorScales()//konstruktor inicializacii
+FloorScales::FloorScales(int _size)//konstruktor inicializacii
 {
-	A = new weighing;
+	count = 0;
+	delta = 10;
+	size = _size;
+	A = new weighing[size];
 }
 
 
-FloorScales::FloorScales(const FloorScales &obj) : count(obj.count) //konstructor kopirovaniya
+FloorScales::FloorScales(const FloorScales &obj) :size(obj.size), count(obj.count) //konstructor kopirovaniya
 {
-	A = new weighing;
-	A = obj.A;
+	A = new weighing[size];
+	for (int i = 0; i < size; i++)
+	{
+		A[i] = obj.A[i];
+	}
 }
 
 
 FloorScales::~FloorScales() //destruktor
 {
 	delete[]A;
-	count = 0;
+	count = size = 0;
 	A = NULL;
 }
 
+void FloorScales::add_weighing(weighing &obj) //dobavlenie vzveshivaniya
+{
+	if (count == size)
+	{
+		weighing *tmp;
+		size += delta;
+		tmp = new weighing[size];
+		for (int i = 0; i < count; ++i)
+		{
+			tmp[i] = A[i];
+			delete[]A;
+			A = tmp;
+		}
+
+		A[count] = obj;
+		count++;
+	}
+}
 
 weighing FloorScales::get_first_weighing(string _n) //poisk pervogo vzveshivaniya cheloveka
 {
@@ -147,14 +172,9 @@ double FloorScales::get_max_weight(string _n, int _m) //max ves za mesyac
 	return max;
 }
 
-void FloorScales::add_weighing(weighing &obj) //dobavlenie vzveshivaniya
-{
-	if (!A) cout << "Zagruzite file" << endl;
-	A[count] = obj;
-	count++;
-}
 
-FloorScales& FloorScales::operator=(const FloorScales &obj) //operator prisvaivaniya
+
+FloorScales& FloorScales::operator=(const FloorScales & obj) //operator prisvaivaniya
 {
 	if (this == &obj) return *this;
 	if (size != obj.size)
