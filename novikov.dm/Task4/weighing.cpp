@@ -1,6 +1,7 @@
 #include <string>
 #include <iostream>
-#include "weighing.h"
+#include "weighing.h" 
+
 weighing::weighing()
 {
 	day = month = year = weight = 0;

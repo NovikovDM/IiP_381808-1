@@ -21,7 +21,7 @@ FloorScales::FloorScales(int _size)//konstruktor inicializacii
 }
 
 
-FloorScales::FloorScales(const FloorScales &obj) :size(obj.size), count(obj.count) //konstructor kopirovaniya
+FloorScales::FloorScales(const FloorScales &obj) :size(obj.size), count(obj.count) // konstructor kopirovaniya
 {
 	A = new weighing[size];
 	for (int i = 0; i < size; i++)

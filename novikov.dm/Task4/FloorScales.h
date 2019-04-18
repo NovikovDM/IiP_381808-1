@@ -4,6 +4,7 @@
 #include <fstream>
 #include "weighing.h"
 using namespace std;
+
 class FloorScales
 {
 private:

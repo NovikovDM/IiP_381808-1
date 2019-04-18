@@ -5,6 +5,7 @@
 #include "cstdlib"
 #include "floorscales.h"
 #include <Windows.h>
+
 int main()
 {
 	FloorScales fs;
