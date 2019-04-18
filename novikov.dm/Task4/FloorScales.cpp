@@ -8,14 +8,12 @@ FloorScales::FloorScales() //konstruktor po umolchanyu
 {
 	count = size = 0;
 	A = NULL;
-	delta = 10;
 }
 
 
 FloorScales::FloorScales(int _size)//konstruktor inicializacii
 {
 	count = 0;
-	delta = 10;
 	size = _size;
 	A = new weighing[size];
 }
@@ -40,6 +38,7 @@ FloorScales::~FloorScales() //destruktor
 
 void FloorScales::add_weighing(weighing &obj) //dobavlenie vzveshivaniya
 {
+	int delta = 10;
 	if (count == size)
 	{
 		weighing *tmp;
